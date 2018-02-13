@@ -4,5 +4,8 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiUrl: "https://api.smartenit.io:443/v2/",
+  client_secret: "afnJPwBNtQIx90u2VyHHYVmSadbMsR4uIdbMXGWtk3mt",
+  client_id: "iV1gkyvgQ3MsS9TgHNW6oe"
 };

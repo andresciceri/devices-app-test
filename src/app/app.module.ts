@@ -12,7 +12,9 @@ import { DevicesListComponent,
          DevicesListService} from '@app/devices-list';
 import { DevicesViewComponent,
          DevicesViewService } from '@app/devices-view';
-import { LoginComponent, LoginService } from '@app/login';
+import { LoginComponent, LoginService, AuthGuard } from '@app/login';
+import { ProfileUserComponent } from './profile-user/profile-user.component';
+import { MainComponent } from './main/main.component';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { LoginComponent, LoginService } from '@app/login';
     AppComponent,
     DevicesListComponent,
     DevicesViewComponent,
-    LoginComponent
+    LoginComponent,
+    ProfileUserComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,
@@ -31,6 +35,7 @@ import { LoginComponent, LoginService } from '@app/login';
     ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production})
   ],
   providers: [
+    AuthGuard,
     DevicesListService,
     DevicesViewService,
     LoginService],

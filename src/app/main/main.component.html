@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Devices Test App</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+</nav>
+<div class="container-fluid">
+      <div class="row">
+        <div class="navbar-collapse" id="navbarSupportedContent">
+          <nav class="col-md-2 d-md-block bg-light sidebar" >
+            <div class="sidebar-sticky">
+              <ul class="nav flex-column">
+                <li class="nav-item">
+                  <a class="nav-link active" href="#">
+                    <span data-feather="home"></span>
+                    Devices List 
+                  </a>
+                </li>              
+              </ul>
+            </div>
+          </nav>
+        </div>        
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+          <router-outlet></router-outlet>
+        </main>
+      </div>
+</div>
+
