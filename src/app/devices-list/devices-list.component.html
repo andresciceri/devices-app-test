@@ -1,9 +1,41 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-	<h1 class="h2">Devices List</h1>
+	<h1 class="h2">Devices List</h1>	
 	<div class="btn-toolbar mb-2 mb-md-0">
       <div class="btn-group mr-2">
-        <button class="btn btn-sm"><i class="fab fa-microsoft"></i></button>
-        <button class="btn btn-sm"><i class="fas fa-list"></i></button>
+        <button class="btn btn-sm" (click)="changeView()"><i class="fab fa-microsoft"></i></button>
+        <button class="btn btn-sm" (click)="changeView()"><i class="fas fa-list"></i></button>
       </div>      
     </div>
 </div>
+<div class="col-lg-12 col-md-12 col-xs-12 box">
+	<div *ngIf="!gridView">
+		<p-dataTable [value]="devices" [rows]="limit" [paginator]="true" [pageLinks]="3" [lazy]="true" [totalRecords]="total" selectionMode="single" [(selection)]="deviceSelected" (onRowSelect)="onRowSelect($event)" dataKey="_id" [responsive]="true" (onLazyLoad)="loadDeviceLazy($event)" [immutable]="false">
+		    <p-header>Devices</p-header>
+		    <p-column field="_id" header="ID"></p-column>
+		    <p-column field="name" header="Name"></p-column>
+		    <p-column field="hwId" header="ID hardware" [style]="{'overflow':'hidden', 'text-overflow': 'ellipsis'}"></p-column>
+		    <p-column field="state" header="Estado">
+		    	
+		    </p-column>
+		</p-dataTable>
+	</div>
+	<div *ngIf="gridView">
+		<div class="row">
+			<div *ngFor="let device of devices" class="col-lg-4 col-md-6 col-sm-12">
+				<div class="card">
+				  <img class="card-img-top" [src]="device.media?.img" alt="Device Image">
+				  <div class="card-body">
+				    <h5 class="card-title">{{device.name}}</h5>
+				    <p class="card-text">{{device.hwId}}</p>
+				    <p class="card-text">{{device.state}}</p>
+				    <a [routerLink]="['/devices-view',device._id]" class="btn btn-primary">View Detail</a>
+				  </div>
+				</div>
+			</div>
+		</div>
+		<div class="row justify-content-center mt-2">
+			<p-paginator [rows]="limit" [totalRecords]="total" (onPageChange)="paginate($event)"></p-paginator>
+		</div>	
+	</div>	
+</div>
+

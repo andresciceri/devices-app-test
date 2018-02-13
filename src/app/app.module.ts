@@ -3,10 +3,12 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import {HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '@env/environment';
 
+import { DataTableModule, PaginatorModule} from 'primeng/primeng';
 import { AppComponent } from './app.component';
 import { DevicesListComponent,
          DevicesListService} from '@app/devices-list';
@@ -31,8 +33,11 @@ import { MainComponent } from './main/main.component';
     BrowserAnimationsModule,
     FormsModule,
     HttpModule,
+    HttpClientModule,
     AppRoutingModule,
-    ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production})
+    ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production}),
+    DataTableModule,
+    PaginatorModule
   ],
   providers: [
     AuthGuard,

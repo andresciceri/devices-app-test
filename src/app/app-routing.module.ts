@@ -25,15 +25,20 @@ const appRoutes: Routes = [
         path: 'devices-view/:id',
         component: DevicesViewComponent,
         canActivate: [AuthGuard]
+      },
+      { 
+        path: '',
+        redirectTo: '/devices-list',
+        pathMatch: 'full'
       }
     ]
   },
   { 
     path: '',
-    redirectTo: 'devices-list',
+    redirectTo: '/devices-list',
     pathMatch: 'full'
   },
-  { path: '**', redirectTo: 'devices-list' }];
+  { path: '**', redirectTo: '/devices-list' }];
 
   @NgModule({
   imports: [
