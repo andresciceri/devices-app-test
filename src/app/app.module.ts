@@ -4,6 +4,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {HttpClientModule} from '@angular/common/http';
+import { Store, StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import {EffectsModule} from '@ngrx/effects';
+import { rootReducer } from '@app/redux/app.reducer';
+
 import { AppRoutingModule } from './app-routing.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '@env/environment';
@@ -35,7 +40,10 @@ import { MainComponent } from './main/main.component';
     HttpModule,
     HttpClientModule,
     AppRoutingModule,
-    ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production}),
+    ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production}),    
+    StoreModule.forRoot(rootReducer),
+    StoreDevtoolsModule.instrument({ maxAge: 50 }),
+    EffectsModule.forRoot([]),    
     DataTableModule,
     PaginatorModule
   ],
