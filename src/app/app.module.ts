@@ -7,7 +7,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { Store, StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import {EffectsModule} from '@ngrx/effects';
-import { rootReducer } from '@app/redux/app.reducer';
+import { rootReducer } from '@redux/app.reducer';
 
 import { AppRoutingModule } from './app-routing.module';
 import { ServiceWorkerModule } from '@angular/service-worker';

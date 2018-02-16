@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Store } from '@ngrx/store';
 import {Device} from '@app/devices-view';
 import {DeviceList} from './device-list';
 import {DevicesListService} from './devices-list.service';
 import { LazyLoadEvent } from 'primeng/primeng';
+import { AppState } from '@redux/app.reducer';
+import * as DeviceActions from '@redux/devices/devices.actions';
 
 @Component({
   selector: 'app-devices-list',
@@ -20,7 +23,8 @@ export class DevicesListComponent implements OnInit {
 	total: number;
 
   constructor(private router: Router, private route: ActivatedRoute, 
-  	private listService: DevicesListService) { 
+  	private listService: DevicesListService,
+    private store: Store<AppState>) { 
   	this.devices = [];
   	this.limit = 2;
     this.gridView = false;
@@ -39,6 +43,7 @@ export class DevicesListComponent implements OnInit {
   	this.listService.getDevicesList(pag,this.limit)
   	.subscribe((list: DeviceList) => {
   		this.devices = list.data;
+      this.store.dispatch(new DeviceActions.ListDeviceAction(this.devices));
   		this.total = list._links.total;  		
   	});
   }

@@ -1,11 +1,8 @@
-import { ActionReducerMap } from '@ngrx/store';
-import { DevicesReducer } from './devices/devices.reducer';
-import { Device } from '@app/devices-view';
+import { ActionReducerMap,
+  createSelector,
+  createFeatureSelector,
+  ActionReducer,
+  MetaReducer} from '@ngrx/store';
+import {RouterStateUrl} from '@app/shared/utils';
+import * as fromRouter from '@ngrx/router-store';
 
-export interface AppState {
-  devices: Device[]  
-}
-
-export const rootReducer: ActionReducerMap<AppState> = {
-  todos: DevicesReducer  
-};
